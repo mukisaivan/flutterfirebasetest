@@ -1,5 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutterfirebasetest/constants/global_variables.dart';
+import 'package:flutterfirebasetest/screens/game_screen.dart';
+import 'package:flutterfirebasetest/screens/home_screen.dart';
+import 'package:flutterfirebasetest/screens/items_screen.dart';
 
 class BottomNavScreen extends StatefulWidget {
   static const routeName = '/bottom-nav-screen';
@@ -13,18 +16,9 @@ class _BottomNavScreenState extends State<BottomNavScreen> {
   int _selectedIndex = 0;
 
   static const List<Widget> _widgetOptions = <Widget>[
-    Text(
-      'Home Screen',
-      style: TextStyle(fontSize: 24, fontWeight: FontWeight.bold),
-    ),
-    Text(
-      'Search Screen',
-      style: TextStyle(fontSize: 24, fontWeight: FontWeight.bold),
-    ),
-    Text(
-      'Profile Screen',
-      style: TextStyle(fontSize: 24, fontWeight: FontWeight.bold),
-    ),
+    HomeScreen(),
+    ItemsScreen(),
+    GameScreen(),
   ];
 
   void _onItemTapped(int index) {
@@ -37,7 +31,7 @@ class _BottomNavScreenState extends State<BottomNavScreen> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text('Bottom Navigation Demo'),
+        title: const Text('Flutter Firebase Test'),
       ),
       body: Center(
         child: _widgetOptions.elementAt(_selectedIndex),
@@ -49,16 +43,16 @@ class _BottomNavScreenState extends State<BottomNavScreen> {
             label: 'Home',
           ),
           BottomNavigationBarItem(
-            icon: Icon(Icons.search),
-            label: 'Search',
+            icon: Icon(Icons.list_alt_outlined),
+            label: 'Items',
           ),
           BottomNavigationBarItem(
-            icon: Icon(Icons.person),
-            label: 'Profile',
+            icon: Icon(Icons.gamepad_outlined),
+            label: 'Word Game',
           ),
         ],
         currentIndex: _selectedIndex,
-        selectedItemColor: Colors.blue,
+        selectedItemColor: GlobalVariables.primaryColor,
         onTap: _onItemTapped,
       ),
     );

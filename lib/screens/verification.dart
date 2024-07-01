@@ -59,8 +59,10 @@ class _VerificationState extends State<Verification> {
         if (snapshot.connectionState == ConnectionState.done) {
           return snapshot.data ?? Container();
         } else {
-          return const Center(
-            child: Loading(),
+          return const Scaffold(
+            body: Center(
+              child: Loading(),
+            ),
           );
         }
       },
